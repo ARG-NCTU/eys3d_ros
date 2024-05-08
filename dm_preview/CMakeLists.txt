@@ -215,9 +215,9 @@ target_link_libraries(dm_preview_imu_listener ${LINK_LIBRARIES})
 
 
 add_custom_command(TARGET dm_preview POST_BUILD 
-    COMMAND 
-    cp -r ${CMAKE_SOURCE_DIR}/dm_preview/eYs3D_wrapper/lib/* ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/
-    )
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/eys3d_ros/dm_preview/eYs3D_wrapper/lib/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/
+)
 
 #add_custom_command(TARGET dm_preview POST_BUILD 
 #  COMMAND 
@@ -225,9 +225,9 @@ add_custom_command(TARGET dm_preview POST_BUILD
 #  )
 
 add_custom_command(TARGET dm_preview POST_BUILD 
-    COMMAND 
-    cp -r ${CMAKE_SOURCE_DIR}/dm_preview/eYs3D_wrapper/eYs3D/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/dm_preview/eYs3D/
-    )
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/eys3d_ros/dm_preview/eYs3D_wrapper/eYs3D/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/dm_preview/eYs3D/
+)
 
 
 
