@@ -192,6 +192,9 @@ target_link_libraries(dm_preview_listener ${LINK_LIBRARIES})
 add_executable(dm_preview_imu_listener src/imu_listener.cpp)
 target_link_libraries(dm_preview_imu_listener ${LINK_LIBRARIES})
 
+add_executable(rotate_compress_image src/rotate_compress_image.cpp)
+target_link_libraries(rotate_compress_image ${LINK_LIBRARIES})
+
 add_custom_command(
   TARGET dm_preview
   POST_BUILD
