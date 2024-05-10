@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="rotate" default="true" />
-    <!-- Stream format -->
-    <arg name="base_frame" value="dm_base_frame" />
 
     <!-- Stream format -->
     <arg name="stream_mjpg" default="0" />
@@ -32,7 +30,7 @@
     <arg name="color_Left_Right" default="1" />
 
     <!-- For example G53 -->
-    <arg name="camera" default="camera_left" />
+    <arg name="camera" default="camera" />
 
     <arg name="camera_sn" default="" />
 
