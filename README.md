@@ -5,8 +5,10 @@ eYs3D dm_preview is a package for eYs3D Depth camera module.
 ----------
 ## Clone this project
 
-* `git clone https://github.com/eYs3D/eys3d_ros.git`
-* `Copy dm_preview folder to your workspace/src`
+Git clone this project to your ROS workspace src folder.
+
+`git clone https://github.com/eYs3D/eys3d_ros.git`
+
 ----------
 
 ## Support platforms
@@ -41,33 +43,18 @@ The following instructions are written for ROS Melodic on Ubuntu 18.04
 
 ## Build dm_preview
 
-`copy to your workspace/src`  
-    
 `catkin_make`  
+
+Currently, don't use catkin build, it won't copy `eYs3D_wrapper` to `CMAKE_LIBRARY_OUTPUT_DIRECTORY`.
 
 ----------
 
 ## Usage Instructions
 
- - **Start the eYs3D dm_preview node**
- 
- 1. Source your setup bash using:  
-
-    `source ./devel/setup.bash`
-
- 2. Create terminal and type below command:  
-
-    `roslaunch dm_preview G100Plus_1.launch`  
-        
- > This will stream G100 Plus camera sensors and publish on the appropriate ROS topics. Other stream resolutions and frame rates can optionally be provided as parameters to the 'dm_preview.launch' file.  
-
-    Please reference camera_name_video_mode_list.txt for every video mode's detial.  
-
- - **Set Camera Controls Using Dynamic Reconfigure Params**
- 
-    The following command allow to change camera control values using [http://wiki.ros.org/rqt_reconfigure].  
-
-    `rosrun rqt_reconfigure rqt_reconfigure`   
+1. Check serial no. in `multi_cameras.launch`
+2. Launch
+   
+   `roslaunch dm_preview multi_cameras.launch`
 
  - **Published Topics**  
 
