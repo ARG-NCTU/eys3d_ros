@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="node_start_delay" default="1.0" />
     <arg name="rotate" default="true" />
 
     <!-- Stream format -->
@@ -35,6 +36,7 @@
     <arg name="camera_sn" default="" />
 
     <include file="$(find dm_preview)/launch/dm_preview.launch">
+        <arg name="node_start_delay" value="$(arg node_start_delay)" />
         <arg name="module_name" value="$(arg camera)" />
         <arg name="tf_prefix" value="$(arg camera)" />
         <arg name="color_mode" default="$(arg color_Left)" />

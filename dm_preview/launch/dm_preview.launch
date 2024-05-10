@@ -1,4 +1,7 @@
 <launch>  
+
+  <arg name="node_start_delay" default="1.0" />
+  
   <!-- Depth output -->
   <arg name="depth_raw"         default="0" />
   <arg name="depth_gray"        default="1" />
@@ -108,7 +111,7 @@
   <node pkg="tf" type="static_transform_publisher" name="point_cloud_$(arg dm_preview_prefix)_broadcaster"
   args="$(arg optical_rotate) $(arg dm_preview_prefix)_base_frame $(arg points_frame) 30" /> -->
 
-  <node name="camera_$(arg dm_preview_prefix)_node" pkg="dm_preview" type="dm_preview_node" output="screen" cwd="node">
+  <node name="camera_$(arg dm_preview_prefix)_node" pkg="dm_preview" type="dm_preview_node" output="screen" cwd="node" respawn="true" respawn_delay="15" >
     <!-- Camera params -->
     <param name="dev_serial_number" type="str" value="$(arg dev_serial_number)" />
     <param name="kernel_name" type="str" value="$(arg kernel_name)" />
