@@ -2,6 +2,9 @@
 <launch>
     <arg name="node_start_delay" default="1.0" />
     <arg name="rotate" default="true" />
+    <arg name="image_width" default="640" />
+    <arg name="image_height" default="480" />
+    <arg name="zd_tbl_index" default="1" />
 
     <!-- Stream format -->
     <arg name="stream_mjpg" default="0" />
@@ -41,18 +44,18 @@
         <arg name="tf_prefix" value="$(arg camera)" />
         <arg name="color_mode" default="$(arg color_Left)" />
         <arg name="dev_serial_number" value="$(arg camera_sn)" />
-        <arg name="color_width" value="640" />
-        <arg name="color_height" value="480" />
-        <arg name="depth_width" value="640" />
-        <arg name="depth_height" value="480" />
+        <arg name="color_width" value="$(arg image_width)" />
+        <arg name="color_height" value="$(arg image_height)" />
+        <arg name="depth_width" value="$(arg image_width)" />
+        <arg name="depth_height" value="$(arg image_height)" />
         <arg name="framerate" default="30" />
         <arg name="depth_type" default="$(arg depth_gray)" />
         <arg name="video_mode_type" default="$(arg rect_color_and_depth_interleave)" />
-        <arg name="zd_tbl_index" default="1" />
+        <arg name="zd_tbl_index" value="$(arg zd_tbl_index)" />
         <arg name="interleave_mode" default="true" />
         <arg name="color_stream_format" value="$(arg stream_yuyv)" />
         <arg name="depth_maximum_mm" value="1900" />
-        <arg name="ir_intensity" default="3" />
+        <arg name="ir_intensity" default="6" />
         <arg name="colorful_pointcloud" value="false" />
         <arg name="enable_depth_decimation_filter" value="false" />
         <!--scale down depth and point cloud's density,reduce loading-->
@@ -60,7 +63,7 @@
         <!--must set 2,4,8,16...-->
     </include>
 
-    <node pkg="tf2_ros" type="static_transform_publisher" name="point_cloud_$(arg camera)_broadcaster" args="0 0 0 0 0 3.1415926536 $(arg camera)_left_base_frame $(arg camera)_left_color_frame" />
+    <node pkg="tf" type="static_transform_publisher" name="point_cloud_$(arg camera)_broadcaster" args="0 0 0 -1.5707963268 0 -1.5707963268 $(arg camera)_base_frame $(arg camera)_left_color_frame 100" />
 
     <group if="$(arg rotate)">
         <node name="rotate_compress_image" pkg="dm_preview" type="rotate_compress_image" ns="/dm_preview/$(arg camera)" output="screen">

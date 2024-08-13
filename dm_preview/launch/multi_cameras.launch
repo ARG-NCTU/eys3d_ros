@@ -1,17 +1,31 @@
 <launch>
   <include file="$(find dm_preview)/launch/single_camera.launch">
     <arg name="camera" value="camera_left" />
-    <arg name="camera_sn" value="80362HBA300296" />
+    <arg name="camera_sn" value="80362HBA300056" />
     <arg name="node_start_delay" value="0" />
+    <arg name="image_width" value="1280" />
+    <arg name="image_height" value="720" />
+    <arg name="zd_tbl_index" value="0" />
   </include>
   <include file="$(find dm_preview)/launch/single_camera.launch">
     <arg name="camera" value="camera_top" />
-    <arg name="camera_sn" value="80362H97300438" />
+    <arg name="camera_sn" value="80362HBA300251" />
     <arg name="node_start_delay" value="15" />
+    <arg name="image_width" value="1280" />
+    <arg name="image_height" value="720" />
+    <arg name="zd_tbl_index" value="0" />
   </include>
   <include file="$(find dm_preview)/launch/single_camera.launch">
     <arg name="camera" value="camera_right" />
-    <arg name="camera_sn" value="80362H97300302" />
+    <arg name="camera_sn" value="80362HBA300144" />
     <arg name="node_start_delay" value="30" />
+    <arg name="image_width" value="1280" />
+    <arg name="image_height" value="720" />
+    <arg name="zd_tbl_index" value="0" />
   </include>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera_left_base_link"  args="0.14  0.09 0.14  0.968657735 -0.366519143 3.1415926536 base_link camera_left_base_frame 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera_right_base_link" args="0.14 -0.09 0.14 -0.968657735 -0.366519143 3.1415926536 base_link camera_right_base_frame 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera_top_base_link"   args="0 0 0 0 0 3.1415926536 camera_link camera_top_base_frame 100" />
+
 </launch>
